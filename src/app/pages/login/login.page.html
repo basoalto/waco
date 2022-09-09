@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text color="primary" class="ion-text-center" clearinput>
+    <h1>Iniciar</h1>
+  </ion-text>
+  <form #miformulario="ngForm" (ngSubmit)="onSubmit()" >
+
+    <ion-item>
+      <ion-label position="floating">Iniciar Sesion</ion-label>
+      <ion-input required name="username" type="text" [(ngModel)]= "usuario.username"> </ion-input>
+    </ion-item>
+
+    <ion-item>      
+      <ion-label position="floating">Password</ion-label>
+      <ion-input required type="password" name="password" [(ngModel)]="usuario.password" clearInput></ion-input>
+    </ion-item>
+    
+    <ion-button block color="primary" type="submit">
+      Login
+    </ion-button>
+
+    
+    <ion-text color="primary">
+       <h1>{{miformulario.status}}</h1>
+    </ion-text>
+  </form>
+</ion-content>
