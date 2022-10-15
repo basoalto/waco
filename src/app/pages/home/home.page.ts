@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { FirebaseService } from '../../services/firebase.service';
+import { Usuario } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-home',
@@ -10,25 +10,25 @@ import { MenuController } from '@ionic/angular';
 export class HomePage {
 username:string='';
   constructor(
-    private router:Router,
-    private activatedRouter:ActivatedRoute,
-    private menu:MenuController
-  ) {
+    // private router:Router,
+    // private activatedRouter:ActivatedRoute,
+    // private menu:MenuController,
+    public firebaseService: FirebaseService
+  ) {}
 
-    
-
-    this.activatedRouter.queryParams.subscribe(params=>{
-      if(this.router.getCurrentNavigation().extras.state){
-
-        let usuario=this.router.getCurrentNavigation().extras.state.usr;
-        console.log("Llego el state: " + usuario.username);
-        this.username=usuario.username;
-      }
-      
+  guardar(){
+    const path = 'usuarios/';
+    const newUser: Usuario ={
+      nombre: 'juan',
+      apellido: 'contreras',
+      profesion: 'medico',
+      edad: 34,
+      nivel: 4,
+//id: this.firebaseService.createIdDoc()
+    }
+    this.firebaseService.createDoc<Usuario>(newUser, path).then( res =>{ 
+      console.log(res)
     })
   }
-
-
-
-
 }
+

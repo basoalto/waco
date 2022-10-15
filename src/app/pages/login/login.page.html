@@ -4,23 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-buttons slot="start">
+<ion-menu-button></ion-menu-button>
+</ion-buttons>
+
 <ion-content class="ion-padding">
   <ion-text color="primary" class="ion-text-center" clearinput>
     <h1>Iniciar</h1>
   </ion-text>
-  <form #miformulario="ngForm" (ngSubmit)="onSubmit()" >
+  <form #miformulario="ngForm">
 
     <ion-item>
-      <ion-label position="floating">Iniciar Sesion</ion-label>
-      <ion-input required name="username" type="text" [(ngModel)]= "usuario.username"> </ion-input>
+      <ion-label position="floating">Correo</ion-label>
+      <ion-input required name="correo" type="text" [(ngModel)]= "credenciales.correo"> </ion-input>
     </ion-item>
 
     <ion-item>      
       <ion-label position="floating">Password</ion-label>
-      <ion-input required type="password" name="password" [(ngModel)]="usuario.password" clearInput></ion-input>
+      <ion-input required type="password" name="password" [(ngModel)]="credenciales.password" clearInput></ion-input>
     </ion-item>
     
-    <ion-button block color="primary" type="submit">
+    <ion-button block color="primary" type="submit" (click)="login()">
       Login
     </ion-button>
 

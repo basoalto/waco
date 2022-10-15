@@ -9,31 +9,70 @@ import 'animate.css';
 })
 export class LoginPage implements OnInit {
 
-  usuario={
-    username:'',
-    password:''
-  }
-  constructor(private router: Router, private alertController:AlertController) { }
 
-  ngOnInit() {
+  credenciales ={
+    correo: null,
+    password: null
   }
+  constructor() {}
 
-  onSubmit()
-  {
-  if(this.usuario.username=="lucas" && this.usuario.password == "1234")
-  { 
-    let navigationExtras:NavigationExtras={
-      state:{
-        usr:this.usuario
-      } 
+  ngOnInit() {}
+  
+  login(){
+      console.log('credenciales => ', this.credenciales)
     }
-    console.log('usuario valido');
-    console.log(this.usuario);
-    this.router.navigate(['/home'], navigationExtras)
+
   }
-  else{
-    console.log("acceso denegado");
-  }
-}
-}
+
+//   onSubmit()
+//   {
+//   if(this.usuario.username=="lucas" && this.usuario.password == "1234")
+//   { 
+//     let navigationExtras:NavigationExtras={
+//       state:{
+//         usr:this.usuario
+//       } 
+//     }
+//     console.log('usuario valido');
+//     console.log(this.usuario);
+//     this.router.navigate(['/home'], navigationExtras)
+//   }
+//   else{
+//     console.log("acceso denegado");
+//     this.presentAlert();
+//   }
+// }
+
+// async presentAlert()
+// {
+//   const alert = await this.alertController.create({
+//     header: 'Acceso Denegado',
+//     subHeader: '',
+//     message: 'Usuario o Contraseña incorrectos',
+//     buttons: [
+//       {
+//         text: 'Cancelar',
+//         role: 'cancel',
+//         handler: () => {
+//           console.log('Alert canceled');
+//         },
+//       },
+//       {
+//         text: 'Aceptar',
+//         role: 'confirm',
+//         handler: () => {
+//           console.log('Alert confirmed');
+//         },
+//       },
+//     ],
+//     mode:'ios',
+//     backdropDismiss:false,
+//     cssClass:'miclase',
+//   });
+
+//   await alert.present();
+
+//   const { role } = await alert.onDidDismiss();
+//   console.log(`Dismissed with role: ${role}`);
+// }}
 

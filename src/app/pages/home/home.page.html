@@ -23,29 +23,10 @@
       <ion-label stacked>Username</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item>
-  
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
 
-    
-    <ion-item>
-      <ion-select placeholder="Nivel Educacional">
-         <ion-select-option value="Basica">Basica</ion-select-option>
-         <ion-select-option value="Media">Media</ion-select-option>
-         <ion-select-option value="Universitaria">Universitaria</ion-select-option>
-      </ion-select>
-    </ion-item>
-  
-    <ion-button color="primary">Limpiar</ion-button>
+    <ion-button color="primary" (click)="guardar()">Guardar</ion-button>
     <ion-button color="secondary">Mostrar</ion-button>
 
-    <ion-item>
-      <ion-label>Fecha Nacimiento</ion-label>
-      <ion-datetime
-       display-format="DD MM YYYY"></ion-datetime>
-    </ion-item>
   </ion-list>
   
 

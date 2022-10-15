@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { HomePageModule } from './pages/home/home.module';
+import {HoraAccesoGuard} from './guards/hora-acceso.guard'
 
 const routes: Routes = [
   {
@@ -12,25 +14,25 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'registration',
-    loadChildren: () => import('./pages/registration/registration.module').then( m => m.RegistrationPageModule)
-  },
-  {
-    path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+     path: 'home',
+     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+     canActivate: [HoraAccesoGuard]
   },
   {
     path: 'cards',
-    loadChildren: () => import('./pages/cards/cards.module').then( m => m.CardsPageModule)
+    loadChildren: () => import('./pages/cards/cards.module').then( m => m.CardsPageModule),
+    canActivate: [HoraAccesoGuard]
   },
   {
     path: 'listas',
     loadChildren: () => import('./pages/listas/listas.module').then( m => m.ListasPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  }
+
+
 ];
 @NgModule({
   imports: [
