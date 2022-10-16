@@ -18,7 +18,7 @@ export class HoraAccesoGuard implements CanActivate {
 
     //compraremos la hora con el maximo permitido
 
-    if (hora >= 22){
+    if (hora >= 24){
     // Si la hora es mayor o igual redireccionamos al home
       this.router.navigate(['']);
     // Si devolvemos FALSE no de permitirá el acceso  

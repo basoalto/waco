@@ -1,8 +1,7 @@
 export interface Usuario{
     nombre: string;
     apellido: string;
-    profesion: string;
+    domicilio: string;
     edad: number;
     id?: String;
-    nivel?: number;
 }

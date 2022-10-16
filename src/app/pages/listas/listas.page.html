@@ -1,16 +1,17 @@
 <ion-header>
   <ion-toolbar >
-    <ion-title margin-right>listas</ion-title>
+    <ion-title margin-right>Alumnos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let item of coleccion">
     <ion-item>
       <ion-avatar>
-        <img [src]="" />
+        <ion-img src="{{item.domicilio}}"></ion-img>
       </ion-avatar>
-      <ion-label>Label</ion-label>
+      <ion-label>{{item.apellido}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
+

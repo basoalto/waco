@@ -16,14 +16,19 @@ username:string='';
     public firebaseService: FirebaseService
   ) {}
 
+  ngOnInit(): void{
+    
+  }
+
+
+
   guardar(){
     const path = 'usuarios/';
     const newUser: Usuario ={
-      nombre: 'juan',
-      apellido: 'contreras',
-      profesion: 'medico',
-      edad: 34,
-      nivel: 4,
+      nombre: '',
+      apellido: '',
+      domicilio: '',
+      edad: null
 //id: this.firebaseService.createIdDoc()
     }
     this.firebaseService.createDoc<Usuario>(newUser, path).then( res =>{ 
