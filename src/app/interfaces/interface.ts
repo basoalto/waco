@@ -3,5 +3,5 @@ export interface Usuario{
     apellido: string;
     domicilio: string;
     edad: number;
-    id?: String;
+    id?: string;
 }

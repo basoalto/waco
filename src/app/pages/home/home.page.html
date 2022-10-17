@@ -23,23 +23,23 @@
   <ion-list>
 
     <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked>nombre</ion-label>
+      <ion-input type="text" name="nombre" [(ngModel)]="newUser.nombre" clearInput></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Apellido</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="apellido" [(ngModel)]="newUser.apellido" clearInput></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Domicilio</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="domicilio" [(ngModel)]="newUser.domicilio" clearInput></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label stacked>Edad</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" name="edad" [(ngModel)]="newUser.edad" clearInput></ion-input>
     </ion-item>
 
     <ion-button color="primary" (click)="guardar()">Guardar</ion-button>

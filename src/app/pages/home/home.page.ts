@@ -8,7 +8,16 @@ import { Usuario } from '../../interfaces/interface';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-username:string='';
+username: string;
+path = 'usuarios/';
+newUser: Usuario ={
+  nombre: '',
+  apellido: '',
+  domicilio: '',
+  edad: null,
+  id: this.firebaseService.createIdDoc()
+}
+
   constructor(
     // private router:Router,
     // private activatedRouter:ActivatedRoute,
@@ -23,16 +32,9 @@ username:string='';
 
 
   guardar(){
-    const path = 'usuarios/';
-    const newUser: Usuario ={
-      nombre: '',
-      apellido: '',
-      domicilio: '',
-      edad: null
 //id: this.firebaseService.createIdDoc()
-    }
-    this.firebaseService.createDoc<Usuario>(newUser, path).then( res =>{ 
-      console.log(res)
+    this.firebaseService.createDoc<Usuario>(this.newUser, this.path, this.newUser.id).then( res =>{ 
+    console.log(res)
     })
   }
 }

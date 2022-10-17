@@ -6,18 +6,18 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 })
 export class FirebaseService {
 
-  constructor(private FireStore: AngularFirestore) { }
-createDoc<tipo>(data: tipo, enlace:string){
+constructor(private FireStore: AngularFirestore) { }
 
 
+createDoc<tipo>(data: tipo, enlace:string, idDoc: string){
    const userCollection: AngularFirestoreCollection<tipo> =
 //lo que hace es apuntar a la coleccion de firebase. es como si estuviera ubicado en USUARIO en firebase.
         this.FireStore.collection<tipo>(enlace);
 //despues se crea un documento en USUARIO.
-        return userCollection.add(data);
+        return userCollection.doc(idDoc).set(data);
 }
 
-createIdDoc(): String {
+createIdDoc(): string {
   return this.FireStore.createId();
 }
 
