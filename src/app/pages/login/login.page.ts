@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import 'animate.css';
+import { AuthService } from 'src/app/services/auth.service';
+import { HomePage } from '../home/home.page';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,16 +16,22 @@ export class LoginPage implements OnInit {
     correo: null,
     password: null
   }
-  constructor() {}
+  constructor(private auth: AuthService,
+              private router: Router) {}
 
   ngOnInit() {}
   
-  login(){
+  async login(){
       console.log('credenciales => ', this.credenciales)
-    }
-
+       const res = await this.auth.login(this.credenciales.correo, this.credenciales.password).catch(error =>{
+        console.log('contrasena o correo estan mal')
+       })
+       if(res){
+        console.log(res)
+       }
+       this.router.navigate(['/home'])
   }
-
+}
 //   onSubmit()
 //   {
 //   if(this.usuario.username=="lucas" && this.usuario.password == "1234")
@@ -75,4 +83,3 @@ export class LoginPage implements OnInit {
 //   const { role } = await alert.onDidDismiss();
 //   console.log(`Dismissed with role: ${role}`);
 // }}
-

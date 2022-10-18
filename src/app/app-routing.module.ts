@@ -30,7 +30,11 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+  },  {
+    path: 'resgistro',
+    loadChildren: () => import('./pages/resgistro/resgistro.module').then( m => m.ResgistroPageModule)
   }
+
 
 
 ];

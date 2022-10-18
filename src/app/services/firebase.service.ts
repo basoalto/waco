@@ -36,6 +36,12 @@ getDoc<tipo>(path){
 }
 
 
+getCollection<tipo>(path){
+  const usersCollection: AngularFirestoreCollection<tipo> =
+          this.FireStore.collection<tipo>(path);
+//valueChanges: de toda la coleccion
+          return usersCollection.valueChanges();
+}
 
 
 }

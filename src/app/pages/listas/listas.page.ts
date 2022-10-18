@@ -10,16 +10,16 @@ import { Usuario } from '../../interfaces/interface';
 export class ListasPage implements OnInit {
 
 
-  coleccion:any=[];
+  coleccion: any=[];
 
 
   constructor( public firebaseService: FirebaseService) { }
 
   ngOnInit() {
-    const path = '/usuarios/Jjgw4JCFak8uxFZmZK0Q'
-    this.firebaseService.getDoc<Usuario>(path).subscribe(res =>{
-      console.log(res.apellido)
-      this.coleccion[0] = res;
+    const path = '/usuarios'
+    this.firebaseService.getCollection<Usuario>(path).subscribe(res =>{
+      console.log(res)
+      this.coleccion = res;
     });
   }
 
