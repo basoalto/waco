@@ -6,6 +6,6 @@ export interface UserI {
     correo: string;
     uid: string;
     password: string;
-    perfil: 'visitante'| 'admin',
+    perfil: 'alumno'| 'profesor',
     foto: string;
 }

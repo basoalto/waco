@@ -29,7 +29,7 @@ updateDoc(path, id){
 
 }
 
-getDoc<tipo>(path){
+getDoc<tipo>(path: string, id: string){
   const doc: AngularFirestoreDocument<tipo> = this.FireStore.doc(path);
   //OBSERVABLE es estar atento a todas las actividades.
   return doc.valueChanges();

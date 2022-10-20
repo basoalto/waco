@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserI } from 'src/app/interfaces/models';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
@@ -17,10 +18,11 @@ export class ResgistroPage implements OnInit {
     password: null,
     uid: null,
     foto: null,
-    perfil: 'visitante'
+    perfil: 'alumno'
   }
   constructor(private auth: AuthService,
-             private firebaseService: FirebaseService) { }
+             private firebaseService: FirebaseService,
+             private router: Router) { }
 
   ngOnInit() {
   }
@@ -37,7 +39,7 @@ export class ResgistroPage implements OnInit {
       this.datos.uid = id
       this.datos.password = null
       await this.firebaseService.createDoc(this.datos, path, id)
-      
+      this.router.navigate(['/home'])
     }
 
   }

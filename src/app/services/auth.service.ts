@@ -22,5 +22,8 @@ export class AuthService {
   return this.authFirebase.createUserWithEmailAndPassword(datos.correo, datos.password)
  }
 
+ stateUser(){
+  return this.authFirebase.authState
+ }
 }
 
