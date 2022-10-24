@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { FirebaseService } from './services/firebase.service';
-import { doc, getDoc } from "firebase/firestore";
 import { UserI } from './interfaces/models';
 @Component({
   selector: 'app-root',
@@ -18,7 +17,7 @@ export class AppComponent {
                private router: Router,
                private firestore: FirebaseService) {
 //esta linea esta pendiente a los estados de autentificacion del usuario
-                this.auth.stateUser().subscribe(res  =>{
+                this.auth.stateUser().subscribe(res=>{
                   if(res){
                     console.log('esta logueado')
                     this.login = true;
@@ -47,6 +46,7 @@ export class AppComponent {
       console.log('datos =', res)
       if(res){
         this.rol = res.perfil;
+        console.log(res.edad)
       }
       })
   }

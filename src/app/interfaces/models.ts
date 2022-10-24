@@ -9,3 +9,17 @@ export interface UserI {
     perfil: 'alumno'| 'profesor',
     foto: string;
 }
+
+
+export interface Cliente {
+    uid: string;
+    email: string;
+    nombre: string;
+    celular: string;
+    foto: string;
+    referencia: string,
+    ubicacion: {
+        lat: number;
+        log: number;
+    };
+}
