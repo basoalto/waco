@@ -38,10 +38,6 @@ export class PerfilPage implements OnInit {
      }
 
 
-
-
-
-
     const modalAdd = await this.modalController.create({
       component: GooglemapComponent,
       mode: 'ios',

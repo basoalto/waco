@@ -6,9 +6,7 @@ declare var google: any;
 @Injectable({
   providedIn: 'root'
 })
-export class GooglemapsService {
-
-
+export class GooglemapsService { 
   apiKey = environment.ApiKeygoogleMaps
   mapsLoader = false;
 

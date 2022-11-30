@@ -17,7 +17,8 @@ export class LoginPage implements OnInit {
     password: null
   }
   constructor(private auth: AuthService,
-              private router: Router) {}
+              private router: Router,
+              private alertController: AlertController) {}
 
   ngOnInit() {}
   
@@ -82,4 +83,4 @@ export class LoginPage implements OnInit {
 
 //   const { role } = await alert.onDidDismiss();
 //   console.log(`Dismissed with role: ${role}`);
-// }}
+// }

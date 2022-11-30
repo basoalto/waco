@@ -16,11 +16,13 @@
   
   <div #map class="map"></div>
 
-  <ion-chip class="miubicacion" >
+  <ion-chip class="miubicacion" (click)="mylocation()">
     <ion-label class="normal">Mi ubicacion actual</ion-label>
     <ion-icon name="locate"></ion-icon>
   </ion-chip>
-  <ion-chip class="aceptar" >
+
+
+  <ion-chip class="aceptar" (click)="aceptar()">
     <ion-label>Aceptar</ion-label>
     <ion-icon name="cheackmark"></ion-icon>
   </ion-chip>

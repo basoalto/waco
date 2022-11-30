@@ -22,11 +22,13 @@ const routes: Routes = [
   {
      path: 'home',
      loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    ...canActivate(onlyAllowSelf)
   },
   {
     path: 'cards',
     loadChildren: () => import('./pages/cards/cards.module').then( m => m.CardsPageModule)
   },
+   
   {
     path: 'listas',
     loadChildren: () => import('./pages/listas/listas.module').then( m => m.ListasPageModule),
@@ -35,17 +37,22 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule),
+    ...canActivate(onlyAllowSelf)
   },
   {
     path: 'resgistro',
     loadChildren: () => import('./pages/resgistro/resgistro.module').then( m => m.ResgistroPageModule)
-  },  {
+  },
+  {
     path: 'perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
-  }
+    ,...canActivate(onlyAllowSelf)
+  },
+  {
+    path: 'historial',
+    loadChildren: () => import('./pages/historial/historial.module').then( m => m.HistorialPageModule)
 
-
-
+  },
 
 ];
 @NgModule({

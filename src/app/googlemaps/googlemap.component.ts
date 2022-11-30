@@ -1,11 +1,11 @@
 import { Component, ElementRef, Input, OnInit, ViewChild, Inject, ViewChildren, Renderer2, inject} from '@angular/core';
 import { GooglemapsService } from './googlemaps.service';
-import { Plugins } from 'protractor/built/plugins';
+import { Geolocation } from '@capacitor/geolocation';
 import { ModalController } from '@ionic/angular';
 import { DOCUMENT } from '@angular/common';
 import { map } from 'rxjs/operators';
 
-// const {Geolocation} = Plugins;
+
 declare var google: any;
 
 @Component({
@@ -97,4 +97,28 @@ export class GooglemapComponent implements OnInit {
 
   }
 
+
+  async mylocation(){
+    console.log('ubicacion')
+
+    const printCurrentPosition = async () => {
+      const coordinates = await Geolocation.getCurrentPosition();
+    
+      console.log('Current position:', coordinates);
+
+        const position ={
+        lat: coordinates.coords.latitude,
+        log: coordinates.coords.longitude,
+      }
+      this.addMarker(position);
+    };
+      
+    printCurrentPosition()
+  }
+
+  aceptar(){
+    console.log(this.positionSet)
+// dismiss cierra el modal.
+    this.modalController.dismiss({pos: this.positionSet})
+  }
 }

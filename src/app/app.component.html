@@ -1,18 +1,18 @@
 <ion-menu side="start" menuId="first" contentId="main">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Start Menu</ion-title>
+      <ion-title>MENU</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
       <ion-menu-toggle>
-        <ion-item detail="true" routerLink="/home" *ngIf="login == true && rol === 'profesor'">Ajustes</ion-item>
-        <ion-item detail="true" routerLink="/home" *ngIf="login == true && rol === 'alumno'">Home</ion-item>
+        <ion-item detail="true" routerLink="/home" *ngIf="login == true && rol === 'profesor'">Home</ion-item>
         <ion-item detail="true" routerLink="/login" *ngIf="login == false">Login</ion-item>
         <ion-item detail="true" routerLink="/listas" *ngIf="login == true && rol === 'profesor'">Alumnos</ion-item>
         <ion-item detail="true" routerLink="/cards" *ngIf="login == true && rol === 'profesor'">Asistencia</ion-item>
-        <ion-item detail="true" routerLink="/about" *ngIf="login == true">Sobre Nosotros</ion-item>
+        <ion-item detail="true" routerLink="/perfil" *ngIf="login == true && rol === 'profesor'" >perfil</ion-item>
+        <ion-item detail="true" routerLink="/historial" *ngIf="login == true">Historial</ion-item>
         <ion-item detail="true" (click)="logout()" *ngIf="login == true">Logout</ion-item>
       </ion-menu-toggle>
     </ion-list>

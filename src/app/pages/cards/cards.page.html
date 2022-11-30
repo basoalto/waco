@@ -4,9 +4,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content
+[fullscreen]="true"
+[style.--background]="scanActive?'#00000000':'#ffffff'"
+>
     <ion-button (click)="scan()" expand="full" 
-    fill="outline" shape="round">
+    fill="outline" shape="round"
+    [hidden]="scanActive">
       Scanner
     </ion-button>
+
+    <ion-row class="scan-button" [hidden]="!scanActive">
+      <ion-col class="ion-no-padding">
+        <ion-button expand="full" (click)="stopScanner()">
+          Stop
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <div class="scan-box" [hidden]="!scanActive"></div>
 </ion-content>
