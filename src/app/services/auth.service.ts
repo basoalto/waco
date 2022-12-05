@@ -12,7 +12,8 @@ export class AuthService {
  login(correo: string, passsword: string){
 // para que no me devielva una promesa le envio un return.
    return  this.authFirebase.signInWithEmailAndPassword(correo,passsword)
- }
+  }
+ 
 
  logout(){
   this.authFirebase.signOut()

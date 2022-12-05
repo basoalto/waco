@@ -32,7 +32,6 @@ newUser: Usuario ={
   guardar(){
 //id: this.firebaseService.createIdDoc()
     this.firebaseService.createDoc<Usuario>(this.newUser, this.path, this.newUser.id).then( res =>{ 
-    console.log(res)
     })
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserI } from 'src/app/interfaces/models';
+import { Registro } from 'src/app/interfaces/registro.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
@@ -28,12 +29,12 @@ export class ResgistroPage implements OnInit {
   }
 
   async registrar(){
-    console.log(this.datos)
+    //console.log(this.datos)
     const res = await this.auth.registrarUser(this.datos).catch( error=> {
-      console.log('error')
+      //console.log('error')
     })
     if(res){
-      console.log('exito al crear usuario')
+      //console.log('exito al crear usuario')
       const path = 'USUARIO';
       const id = res.user.uid
       this.datos.uid = id

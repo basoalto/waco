@@ -15,9 +15,9 @@
 
 <ion-content>
 
-  <ion-list>
+  <ion-list *ngIf="registros">
 
-    <ion-item *ngFor="let registro of dataLocal.guardados"
+    <ion-item *ngFor="let registro of registros"
               (click)="abrirRegistros(registro)" 
               detail>
 

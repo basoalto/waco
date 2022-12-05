@@ -23,13 +23,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
   
   async login(){
-      console.log('credenciales => ', this.credenciales)
+      //console.log('credenciales => ', this.credenciales)
        const res = await this.auth.login(this.credenciales.correo, this.credenciales.password).catch(error =>{
-        console.log('contrasena o correo estan mal')
+        //console.log('contrasena o correo estan mal')
        })
-       if(res){
-        console.log(res)
-       }
        this.router.navigate(['/home'])
   }
 }

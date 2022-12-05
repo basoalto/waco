@@ -52,8 +52,6 @@ export class GooglemapComponent implements OnInit {
     this.googleMapsService.init(this.renderer, this.document).then(() =>{
       this.initMaps()
     }).catch( (error)=>{
-      console.log(error)
-
     })
   }
 

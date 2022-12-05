@@ -19,12 +19,10 @@ export class AppComponent {
 //esta linea esta pendiente a los estados de autentificacion del usuario
                 this.auth.stateUser().subscribe(res=>{
                   if(res){
-                    console.log('esta logueado')
                     this.login = true;
                     this.getDatosUser(res.uid)
                   } else 
                   {
-                    console.log('no esta logueado')
                     this.login = false;
                   }
                 })
@@ -34,7 +32,6 @@ export class AppComponent {
 
   logout(){
     this.auth.logout()
-    console.log('se cerro la sesion')
     this.router.navigate(['/login'])
   }
 
@@ -43,10 +40,8 @@ export class AppComponent {
     const path = '/USUARIO';
     const id = uid;
     this.firestore.getDoc<UserI>(path, id).subscribe( res =>{
-      console.log('datos =', res)
       if(res){
         this.rol = res.perfil;
-        console.log(res.edad)
       }
       })
   }

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { Registro } from '../interfaces/registro.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class FirebaseService {
 
 constructor(private FireStore: AngularFirestore) { }
@@ -39,10 +41,6 @@ getCollection<tipo>(path){
 //valueChanges: de toda la coleccion
           return usersCollection.valueChanges();
 }
-
-
 }
-
-
 
 

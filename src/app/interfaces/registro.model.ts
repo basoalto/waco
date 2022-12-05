@@ -1,19 +1,18 @@
 
-
 export class Registro{
-
-    public format: string;
-    public type: string;
-    public icon: string;
-    public created: Date;
+    public icon: string ;
+    public created: string;
     public codigoClase: string;
     public horaClase: string;
     public salaClase: string;
     public fechaClase: string;
+    public userId: string;
 
-    constructor(format: string, text: string){
-        this.format = format;
-        this.created = new Date();
+
+    constructor(text: string, id: string){
+
+        this.created = new Date().toString();
+        this.userId = id;
         // this.determinarTipo()
         this.determinarTipo(text);
         this.icon = 'pin';
@@ -27,22 +26,22 @@ export class Registro{
         this.horaClase = splitText[2]
         this.salaClase = splitText[3]
     }
-    // private determinarTipo(){
-    //     const inicioTexto = this.text.substring(0,4)
-    //     console.log('tipo', inicioTexto)
 
-    //     switch(inicioTexto){
-    //         case 'http':
-    //             this.type = 'http';
-    //             this.icon = 'globe';
-    //         break;
-    //         case 'geo':
-    //             this.type = 'geo';
-    //             this.icon = 'pin';
-    //         break
 
-    //         default:
-    //             this.type = 'no reconocido'
-    //             this.icon = 'create'
-    //     }
+    public convertirDatos(){
+        return { 
+            icon: this.icon,
+            created: this.created,
+            codigoClase: this.codigoClase,
+            horaClase: this.horaClase,
+            salaClase: this.salaClase,
+            fechaClase: this.fechaClase,
+            userId: this.userId,
+        }
+    } 
+
+    public claseExiste(nuevoRegistro: Registro) {
+        return this.fechaClase == nuevoRegistro.fechaClase && this.horaClase == nuevoRegistro.horaClase
     }
+
+}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Registro } from 'src/app/interfaces/registro.model';
 import { DataLocalService } from '../../services/data-local.service';
+
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.page.html',
@@ -10,6 +12,12 @@ export class CardsPage implements OnInit {
   scanActive: boolean = false;
   
   constructor(private dataLocal: DataLocalService) { }
+
+  ngOnInit() {
+  }
+  // ionViewWillEnter(){
+  //  this.scan();
+  // }
 
   async checkPermission() {
     return new Promise(async (resolve, reject) => {
@@ -23,50 +31,52 @@ export class CardsPage implements OnInit {
     });
   }
 
-
-
-  ngOnInit() {
-  }
-  // ionViewWillEnter(){
-  //  this.scan();
-  // }
-
   async scan(){
       const allowed = await this.checkPermission();
 
-      if (allowed) {
-        this.scanActive = true;
-        BarcodeScanner.hideBackground();
-        document.querySelector('body').classList.add('scanner-active');
-  
-        const result = await BarcodeScanner.startScan();
-  
-        if (result.hasContent) {
-          this.scanActive = false; 
-          this.dataLocal.guardarRegistro(result.format,result.content)
-          //The QR content will come out here
-          //Handle the data as your heart desires here
-        } 
-        // else {
-          // this.guardarRegistro();
-        // }
-        BarcodeScanner.showBackground()
-        document.querySelector('body').classList.remove('scanner-active');
-      } else {
+      if (!allowed) {
         alert('NOT ALLOWED!');
+        return;
       }
+
+      this.scanActive = true;
+      BarcodeScanner.hideBackground();
+      document.querySelector('body').classList.add('scanner-active');
+
+      const result = await BarcodeScanner.startScan();
+
+      if (result.hasContent) {
+        this.scanActive = false;
+        await this.guardarRegistro(result.content)
+        
+        //The QR content will come out here
+        //Handle the data as your heart desires here
+      } 
+      // else {
+        // this.guardarRegistro();
+      // }
+      BarcodeScanner.showBackground()
+      document.querySelector('body').classList.remove('scanner-active');
     }
+
   
     stopScanner() {
       BarcodeScanner.showBackground()
       BarcodeScanner.stopScan();
       this.scanActive = false;
       document.querySelector('body').classList.remove('scanner-active');
-     this.guardarRegistro() 
     }
 
-    guardarRegistro() {
-      this.dataLocal.guardarRegistro('QRCode', 'pgy31|27/09/22|16:50|e300')
+    async guardarRegistro(content: string) {
+      const currentUserId = await this.dataLocal.obtenerUserId();
+      const registro = new Registro(content, currentUserId);
+
+      this.dataLocal.verificarRegistroExistente(registro, currentUserId).subscribe(existe => {
+        if (!existe) {
+          this.dataLocal.guardarRegistro(registro)
+        }
+      })
+
     } 
 
     ionViewWillLeave() {
